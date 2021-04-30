@@ -45,7 +45,7 @@ export const signinAPI = async (email, password) => {
 
 export const dashboardAPI = async (token) => {
   try {
-    const result = await API.post("/dashboard", { token });
+    const result = await API.post("/affiliate_program/earn", { token });
     return result.data;
   } catch (e) {
     console.log("FAILED: unable to perform API request (dashboardAPI)");

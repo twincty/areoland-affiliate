@@ -28,6 +28,7 @@ const affiliate_user_column = [
     field: "created_on",
     render: (rowData) => <DateFormat date={rowData.created_on} />,
   },
+  { title: "Account Type", field: "account_type" },
   { title: "Earn", field: "earn", type: "currency" },
 ];
 
@@ -45,10 +46,12 @@ const Dashboard = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const userData = useSelector((state) => state.app.user);
-  const [dashboardData, setDashboardData] = useState({});
+  const [dashboardData, setDashboardData] = useState([]);
+
+  const totalEarn = dashboardData.reduce((r, i) => r + i.earn, 0);
 
   const loadDashboardData = async () => {
-    if (isEmptyObject(dashboardData)) {
+    if (!dashboardData.length) {
       const response = await dashboardAPI(userData.token);
       if (!response.error) {
         setDashboardData(response);
@@ -62,7 +65,7 @@ const Dashboard = () => {
     loadDashboardData();
   }, []);
 
-  if (isEmptyObject(dashboardData)) {
+  if (!dashboardData.length) {
     return null;
   }
 
@@ -95,7 +98,7 @@ const Dashboard = () => {
                   search: false,
                 }}
                 columns={affiliate_user_column}
-                data={dashboardData.affiliate_earn.user_list}
+                data={dashboardData}
                 title="Affiliated Users"
               />
             )}
@@ -109,7 +112,7 @@ const Dashboard = () => {
           color="textSecondary"
           gutterBottom
         >
-          Total Earn: ${formatMoney(0)}
+          Total Earn: ${formatMoney(totalEarn)}
         </Typography>
       </CardActions>
     </Card>
