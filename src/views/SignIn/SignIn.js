@@ -15,9 +15,7 @@ import { Minimal } from "core/Layouts";
 const schema = {
   email: {
     presence: { allowEmpty: false, message: "is required" },
-    length: {
-      maximum: 64,
-    },
+    email: true,
   },
   password: {
     presence: { allowEmpty: false, message: "is required" },
@@ -142,16 +140,14 @@ const SignIn = (props) => {
         </Typography>
         <TextField
           className={classes.textField}
-          error={hasError("username")}
+          error={hasError("email")}
           fullWidth
-          helperText={
-            hasError("username") ? formState.errors.username[0] : null
-          }
-          label="Username"
-          name="username"
+          helperText={hasError("email") ? formState.errors.email[0] : null}
+          label="Email"
+          name="email"
           onChange={handleChange}
           type="text"
-          value={formState.values.username || ""}
+          value={formState.values.email || ""}
           variant="outlined"
         />
         <TextField

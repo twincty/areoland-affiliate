@@ -21,11 +21,6 @@ const useStyles = makeStyles({
   },
 });
 
-const checkUserType = createSelector(
-  (state) => state.user,
-  (user) => user.type
-);
-
 const checkSideBar = createSelector(
   (state) => state.app,
   (app) => app.drawer.sidebar
@@ -34,7 +29,6 @@ const checkSideBar = createSelector(
 const SideBarNav = ({ pages, match, history }) => {
   const classes = useStyles();
 
-  const userType = useSelector(checkUserType);
   const isSidebarOpen = useSelector(checkSideBar);
 
   return (
@@ -64,24 +58,6 @@ const SideBarNav = ({ pages, match, history }) => {
               <Divider />
             </div>
           );
-        }
-        // Check user has permission for this menu or not
-        if (page.permissions) {
-          if (page.permissions.allow) {
-            if (not_in_array(page.permissions.allow, userType)) {
-              if (match.path === page.link) {
-                return <Redirect key={page.title} to="/forbidden" />;
-              }
-              return null;
-            }
-          } else if (page.permissions.deny) {
-            if (in_array(page.permissions.deny, userType)) {
-              if (match.path === page.link) {
-                return <Redirect key={page.title} to="/forbidden" />;
-              }
-              return null;
-            }
-          }
         }
 
         return (

@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 
-import { checkEmailAPI } from "api/areoland";
 import LoadingButton from "core/Components/LoadingButton";
 
 const schema = {
@@ -59,12 +58,6 @@ const CreateAccount = (props) => {
 
   const [loading, setLoading] = useState(false);
 
-  let delayDebounceFn = useRef(1);
-  const [emailChecker, setEmailChecker] = useState({
-    error: false,
-    text: null,
-  });
-
   const [formState, setFormState] = useState({
     isValid: false,
     values: {},
@@ -99,11 +92,6 @@ const CreateAccount = (props) => {
         [event.target.name]: true,
       },
     }));
-
-    clearTimeout(delayDebounceFn);
-    delayDebounceFn = setTimeout(() => {
-      availabilityChecker(event.target.name, event.target.value);
-    }, 500);
   };
 
   const handleSignUp = async (event) => {
@@ -115,35 +103,6 @@ const CreateAccount = (props) => {
 
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
-
-  const availabilityChecker = async (type, value) => {
-    if (type === "email") {
-      setEmailChecker({
-        error: hasError(type),
-        text: formState.errors[type] ? formState.errors[type][0] : null,
-      });
-
-      if (!hasError(type)) {
-        const checkEmail = await checkEmailAPI(value);
-        if (checkEmail.error) {
-          setEmailChecker({
-            error: true,
-            text: checkEmail.error.message,
-          });
-        } else if (!checkEmail.available) {
-          setEmailChecker({
-            error: !checkEmail.available,
-            text: checkEmail.message,
-          });
-        } else {
-          setEmailChecker({
-            error: false,
-            text: null,
-          });
-        }
-      }
-    }
-  };
 
   return (
     <form className={classes.form} onSubmit={handleSignUp}>
@@ -167,9 +126,9 @@ const CreateAccount = (props) => {
       />
       <TextField
         className={classes.textField}
-        error={emailChecker.error}
         fullWidth
-        helperText={emailChecker.text}
+        error={hasError("email")}
+        helperText={hasError("email") ? formState.errors.email[0] : null}
         label="Email address"
         name="email"
         onChange={handleChange}

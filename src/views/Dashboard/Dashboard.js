@@ -44,7 +44,7 @@ const Dashboard = () => {
 
   const { enqueueSnackbar } = useSnackbar();
 
-  const userData = useSelector((state) => state.user);
+  const userData = useSelector((state) => state.app.user);
   const [dashboardData, setDashboardData] = useState({});
 
   const loadDashboardData = async () => {
@@ -72,8 +72,8 @@ const Dashboard = () => {
         subheader={
           <>
             <Typography>
-              Share affiliate link and earn $15 USD on every signup. Below is
-              your affiliate link
+              Share affiliate link and earn <b>30%</b> on every signup for whole
+              year. Below is your affiliate link
             </Typography>
             <br />
             <Typography>

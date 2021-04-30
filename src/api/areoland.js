@@ -43,20 +43,6 @@ export const signinAPI = async (email, password) => {
   }
 };
 
-export const checkEmailAPI = async (email) => {
-  try {
-    const result = await API.post("/available/email", {
-      email: email,
-    });
-    return result.data;
-  } catch (e) {
-    console.log("FAILED: unable to perform API request (checkEmailAPI)");
-    console.log(e);
-    console.log(e.response.data);
-    return e.response.data;
-  }
-};
-
 export const dashboardAPI = async (token) => {
   try {
     const result = await API.post("/dashboard", { token });
