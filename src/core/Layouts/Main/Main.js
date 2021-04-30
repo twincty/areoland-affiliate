@@ -2,12 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  TopBar,
-  SideBar,
-  NotificationDrawer,
-  LoadingDialog,
-} from "./components";
+import { TopBar, SideBar } from "./components";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,15 +28,12 @@ const Main = (props) => {
   const { children } = props;
   return (
     <div className={classes.root}>
-      <LoadingDialog />
-
       <TopBar title={props.title} />
       <SideBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}
       </main>
-      <NotificationDrawer />
     </div>
   );
 };

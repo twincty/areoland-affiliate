@@ -7,8 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { useSelector } from "react-redux";
 
-import UpgradePlan from "./components/UpgradePlan";
-import { drawerWidth } from "constant/Constants";
 import AppActions from "store/actions/app_actions";
 import SideBarNav from "./components/SideBarNav";
 import { withRouter } from "react-router-dom";
@@ -28,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   drawer: {
-    width: drawerWidth,
+    width: 240,
     flexShrink: 0,
     whiteSpace: "nowrap",
   },
   drawerOpen: {
-    width: drawerWidth,
+    width: 240,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

@@ -10,7 +10,6 @@ import { useSnackbar } from "notistack";
 import { signinAPI } from "api/areoland";
 import AppActions from "store/actions/app_actions";
 import LoadingButton from "core/Components/LoadingButton";
-import { UserTypes } from "constant/Enums";
 import { Minimal } from "core/Layouts";
 
 const schema = {

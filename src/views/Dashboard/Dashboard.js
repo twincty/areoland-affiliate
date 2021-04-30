@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
-import Card from "@material-table/core/Card";
-import CardHeader from "@material-table/core/CardHeader";
-import CardContent from "@material-table/core/CardContent";
-import CardActions from "@material-table/core/CardActions";
-import Grid from "@material-table/core/Grid";
-import Divider from "@material-table/core/Divider";
-import Typography from "@material-table/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 import ReactTable from "core/ReactTable";
 import { formatMoney } from "core/utils/format_util";

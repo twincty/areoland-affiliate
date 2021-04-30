@@ -10,7 +10,8 @@ import Routes from "./Routes";
 const browserHistory = createBrowserHistory();
 
 function App() {
-  const isDarkMode = useSelector((state) => state.app.theme.darkmode);
+  // const isDarkMode = useSelector((state) => state.app.theme.darkmode);
+  const isDarkMode = false;
 
   const theme = React.useMemo(
     () =>

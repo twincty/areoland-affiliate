@@ -5,6 +5,7 @@ import { useSnackbar } from "notistack";
 
 import { signupAPI } from "api/areoland";
 import { Minimal } from "core/Layouts";
+import CreateAccount from "./components/CreateAccount";
 
 const SignUp = (props) => {
   const { history } = props;

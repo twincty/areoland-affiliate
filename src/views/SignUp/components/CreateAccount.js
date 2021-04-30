@@ -3,9 +3,9 @@ import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import validate from "validate.js";
 import { makeStyles } from "@material-ui/styles";
-import TextField from "@material-table/core/TextField";
-import Link from "@material-table/core/Link";
-import Typography from "@material-table/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 
 import { checkEmailAPI } from "api/areoland";
 import LoadingButton from "core/Components/LoadingButton";
@@ -194,7 +194,7 @@ const CreateAccount = (props) => {
         title="Sign up now"
         className={classes.signUpButton}
         loading={loading}
-        disabled={!formState.isValid || !captchaSolved || loading}
+        disabled={!formState.isValid || loading}
         fullWidth
         size="large"
         type="submit"
