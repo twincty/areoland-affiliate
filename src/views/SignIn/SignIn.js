@@ -179,9 +179,6 @@ const SignIn = (props) => {
             Sign up
           </Link>
         </Typography>
-        <Link component={RouterLink} to="/forget-password" variant="h6">
-          Forget Password
-        </Link>
       </form>
     </Minimal>
   );

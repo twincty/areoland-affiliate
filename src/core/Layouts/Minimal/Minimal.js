@@ -3,7 +3,12 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import PaymentIcon from "@material-ui/icons/Payment";
 
 import { makeStyles } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
@@ -23,23 +28,24 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   quote: {
+    padding: 8,
     backgroundColor: theme.palette.neutral,
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "gray",
+    backgroundColor: "aliceblue",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   },
   quoteInner: {
-    textAlign: "center",
     flexBasis: "600px",
   },
   quoteText: {
-    color: theme.palette.common.white,
-    fontWeight: 300,
+    color: theme.palette.common.black,
+    fontSize: 20,
+    padding: 8,
   },
   name: {
     marginTop: theme.spacing(3),
@@ -73,6 +79,8 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
+  textIcon: { fontSize: 100, color: "#61a3e0" },
+  textContainer: { backgroundColor: "#e4f2ff", marginTop: 20 },
 }));
 
 const Minimal = (props) => {
@@ -89,18 +97,48 @@ const Minimal = (props) => {
         <Grid className={classes.quoteContainer} item lg={5}>
           <div className={classes.quote}>
             <div className={classes.quoteInner}>
-              <Typography className={classes.quoteText} variant="h1">
-                AreoLand provide you best user experience while working on your
-                properties or with your vendors.
-              </Typography>
-              <div className={classes.person}>
-                <Typography className={classes.name} variant="body1">
-                  Manage Properties Better way
-                </Typography>
-                <Typography className={classes.bio} variant="body2">
-                  Version 1.0.0
-                </Typography>
-              </div>
+              <Paper elevation={0} className={classes.textContainer}>
+                <Grid container>
+                  <Grid item xs={3}>
+                    <PeopleAltIcon className={classes.textIcon} />
+                  </Grid>
+                  <Grid item xs={9}>
+                    <Typography className={classes.quoteText} variant="h1">
+                      Become a partner with us, join our affiliate program and
+                      earn money on each signup.
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Paper>
+
+              <Paper elevation={0} className={classes.textContainer}>
+                <Grid container>
+                  <Grid item xs={9}>
+                    <Typography className={classes.quoteText} variant="h1">
+                      Get 30% on each signup for whole year. As many users
+                      signup from your affiliate link you will get paid more and
+                      more.
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <MonetizationOnIcon className={classes.textIcon} />
+                  </Grid>
+                </Grid>
+              </Paper>
+
+              <Paper elevation={0} className={classes.textContainer}>
+                <Grid container>
+                  <Grid item xs={3}>
+                    <PaymentIcon className={classes.textIcon} />
+                  </Grid>
+                  <Grid item xs={9}>
+                    <Typography className={classes.quoteText} variant="h1">
+                      There is no minimum balance require to get paid, you will
+                      be paid as early as your first user signup.
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Paper>
             </div>
           </div>
         </Grid>
